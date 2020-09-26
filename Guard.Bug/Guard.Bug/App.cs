@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Caliburn.Micro;
 using Caliburn.Micro.Xamarin.Forms;
+using Guard.Bug.Helper;
 using Guard.Bug.ViewModels;
 using Guard.Bug.Views;
 using Xamarin.Forms;
@@ -18,7 +19,7 @@ namespace Guard.Bug
             Initialize();
 
             this.container = container;
-
+            LogManager.GetLog = type => new DebugLogger(type);
             container.PerRequest<MainViewModel>();
 
             DisplayRootView<MainView>();

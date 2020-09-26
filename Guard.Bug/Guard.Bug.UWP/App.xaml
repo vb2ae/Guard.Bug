@@ -1,7 +1,8 @@
-﻿<Application
+﻿<cm:CaliburnApplication
     x:Class="Guard.Bug.UWP.App"
+    xmlns:cm="using:Caliburn.Micro"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Guard.Bug.UWP">
 
-</Application>
+</cm:CaliburnApplication>

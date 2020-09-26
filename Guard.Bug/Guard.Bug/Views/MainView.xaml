@@ -1,12 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Platform.Xamarin.Forms"
+    xmlns:cm="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Platform.Xamarin.Forms"
+    Title="TEST"
              x:Class="Guard.Bug.Views.MainView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical">
+            <Label x:Name="Count" Text="{Binding Count}"/>
+            <Button Text="{Binding Delta}" x:Name="ButtonDelta">
+                <Button.Triggers>
+                    <EventTrigger Event="Clicked">
+                        <cm:ActionMessage MethodName="CountUp" AssociatedObject="{x:Reference ButtonDelta}" >
+                            <cm:Parameter Value="{Binding Source={x:Reference Count}, Path=Text}"/>
+                        </cm:ActionMessage>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
